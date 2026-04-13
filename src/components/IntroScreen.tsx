@@ -20,9 +20,7 @@ export const IntroScreen: React.FC<IntroScreenProps> = ({ onStart, onToggleSideb
   const [selectedAvatar, setSelectedAvatar] = React.useState(CHAR_AVATAR);
 
   const AVATAR_OPTIONS = [
-    "https://lh3.googleusercontent.com/u/0/d/1LTNuCTGmf9kJfeV7zIAYZ_d88rFhsd53",
-    "https://lh3.googleusercontent.com/u/0/d/1jwcCKupPQPXP0u85UxwB2z-1SYe3THKS",
-    "https://lh3.googleusercontent.com/u/0/d/1DS0omdbXAZ7hClDPrp3c9P8hY6b_OE1L"
+    "https://lh3.googleusercontent.com/u/0/d/16zKA0hQAI3EWSUgug9rJYZ8lP69yUoEl"
   ];
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -31,10 +29,10 @@ export const IntroScreen: React.FC<IntroScreenProps> = ({ onStart, onToggleSideb
     
     onStart({
       name: name.trim(),
-      appearance: appearance.trim() || "Nhan sắc hoa nhường nguyệt thẹn, đôi mắt đen láy to tròn.",
+      appearance: appearance.trim() || "nhan sắc sắc nước hương trời, thanh khiết hệt như một đóa sen trắng",
       personality: personality.trim(),
       age: 18,
-      background: "Đứa trẻ mồ côi bị bỏ rơi dưới gốc đa, được Cậu Hai Phục đem về nuôi làm con ở."
+      background: "Mồ côi cha mẹ, hiện tại đang sống tại dinh thự Sài Gòn. Mang tiếng là "cháu gái ruột đặng dì Mười rước lên tỉnh bao bọc", nhưng thực chất là bị ép làm con ở không công, ngày ngày phải cam chịu sự sai vặt, chửi rủa và những trò đày đọa tàn nhẫn của Mười Tú cùng đứa em họ tên Nhài."
     }, selectedAvatar);
   };
 
