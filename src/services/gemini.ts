@@ -8,7 +8,7 @@ export async function sendMessage(
   userAppearance: string,
   userPersonality: string = "",
   apiKey: string,
-  modelName: string = "gemini-flash-latest",
+  modelName: string = "gemini-3-flash-preview",
   additionalSystemPrompt: string = ""
 ) {
   const ai = new GoogleGenAI({ apiKey });
@@ -63,7 +63,7 @@ Bạn đang sống trong bối cảnh thực tại của câu chuyện. Mọi l�
   }
 }
 
-export async function validateApiKey(apiKey: string, modelName: string = "gemini-flash-latest") {
+export async function validateApiKey(apiKey: string, modelName: string = "gemini-3-flash-preview") {
   const ai = new GoogleGenAI({ apiKey });
   try {
     // We use a very simple call to check if the key is valid
