@@ -14,7 +14,13 @@ export async function sendMessage(
   const ai = new GoogleGenAI({ apiKey });
   
   // Format history and ensure it alternates roles correctly
-  let history = messages.map((msg) => ({
+  // Implement a sliding window to prevent lag/crash on long conversations
+  const MAX_HISTORY = 30;
+  const recentMessages = messages.length > MAX_HISTORY 
+    ? messages.slice(-MAX_HISTORY) 
+    : messages;
+
+  let history = recentMessages.map((msg) => ({
     role: msg.role === "assistant" ? "model" : "user",
     parts: [{ text: msg.content.replace(/{{user}}/g, userName) }],
   }));
@@ -88,6 +94,7 @@ export async function sendMessage(
         temperature: 0.9,
         topP: 0.95,
         topK: 40,
+        stopSequences: ["{{user}}:", `${userName}:`],
         safetySettings: [
           { category: HarmCategory.HARM_CATEGORY_HARASSMENT, threshold: HarmBlockThreshold.BLOCK_NONE },
           { category: HarmCategory.HARM_CATEGORY_HATE_SPEECH, threshold: HarmBlockThreshold.BLOCK_NONE },
